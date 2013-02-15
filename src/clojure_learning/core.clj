@@ -40,6 +40,22 @@
        (let [[h & rest] s]
          (if (bit-test found (int h))
            (inner accum rest found)
-           (inner (str accum h) rest (bit-set found (int h))))))) "" s 0))
+           (inner (str accum h) rest (bit-set found (int h))))))) "" s (long 0)))
 
 (remDups "Janx Spirit")
+
+;;are two strings anagrams
+(defn anagrams? [s1 s2] (= (sort s1) (sort s2)))
+
+;;replace all spaces with %20
+(defn escapeSpaces [s]
+  ((fn inner [accum s]
+     (if (= 0 (count s)) accum
+         (let [[h & rest] s]
+           (inner
+            (str accum
+                 (if (= h \space) "%20" h)) 
+            rest)))) "" s))
+
+(escapeSpaces "All the young dudes")
+
