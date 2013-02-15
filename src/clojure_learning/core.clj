@@ -33,3 +33,13 @@
 (revc "gregg")
 
 ;;remove duplicate characters
+(defn remDups [s]
+  ((fn inner [accum s found]
+     (if (= 0 (count s))
+       accum
+       (let [[h & rest] s]
+         (if (bit-test found (int h))
+           (inner accum rest found)
+           (inner (str accum h) rest (bit-set found (int h))))))) "" s 0))
+
+(remDups "Janx Spirit")
