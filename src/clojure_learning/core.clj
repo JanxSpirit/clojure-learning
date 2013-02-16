@@ -59,3 +59,12 @@
 
 (escapeSpaces "All the young dudes")
 
+;;rotate square matrix
+(defn rotate-left [s]
+  (reverse (apply mapv vector s)))
+
+(defn rotate-right [s]
+  (apply mapv vector (reverse s)))
+
+(rotate-left [[1 2 3 4] [5 6 7 8] [9 10 11 12] [13 14 15 16]])
+(rotate-right [[1 2 3 4] [5 6 7 8] [9 10 11 12] [13 14 15 16]])
